@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.users.apps.UsersConfig',
     'DjangoUeditor',
-    'users',
+    # 'users',
     'trade',
     'goods',
     'user_operation',
@@ -97,7 +97,7 @@ DATABASES = {
         'NAME': "mxshop",
         'USER': 'root',
         'PASSWORD': 'test',
-        'HOST': 'localhost',
+        'HOST': '172.26.64.2',
         'PORT': '3306',
         # 'OPTIONS': {'init_command': 'SET storage_engine=INNODB'}
     }

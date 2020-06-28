@@ -22,7 +22,7 @@ class UserProfile(AbstractUser):
     def __str__(self):
         return self.name
 
-class VerifyCode(models):
+class VerifyCode(models.Model):
     '''
     短信验证码
     '''
