@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'trade',
     'goods',
     'user_operation',
+    'crispy_forms',
+    'xadmin',
 ]
 
 
