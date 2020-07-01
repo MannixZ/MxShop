@@ -40,7 +40,7 @@ class GoodsCategoryBrand(models.Model):
     category = models.ForeignKey(GoodsCategory, null=True, blank=True, verbose_name="商品类目", on_delete=models.CASCADE)
     name = models.CharField(default="", max_length=30, verbose_name="品牌名", help_text="品牌名")
     desc = models.CharField(default="", max_length=200, verbose_name="品牌描述", help_text="品牌描述")
-    image = models.ImageField(max_length=200, upload_to='brand/images')
+    image = models.ImageField(max_length=200, upload_to='brands/')
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
 
     class Meta:
@@ -67,7 +67,7 @@ class Goods(models.Model):
     goods_brief = models.TextField(max_length=500, verbose_name="商品简短描述")
     goods_desc = UEditorField(verbose_name=u"内容", imagePath="goods/images/", width=1000, height=300, filePath="goods/files/", default='')
     ship_free = models.BooleanField(default=True, verbose_name="是否承担运费")
-    goods_front_image = models.ImageField(upload_to="", null=True, blank=True, verbose_name="封面图")
+    goods_front_image = models.ImageField(upload_to="goods/images/", null=True, blank=True, verbose_name="封面图")
     is_new = models.BooleanField(default=False, verbose_name="是否新品")
     is_hot = models.BooleanField(default=False, verbose_name="是否热销")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
@@ -86,7 +86,6 @@ class GoodsImage(models.Model):
     '''
     goods = models.ForeignKey(Goods, verbose_name='商品', related_name='images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to="", verbose_name='图片', null=True, blank=True)
-    image_url = models.CharField(max_length=300, null=True, blank=True, verbose_name='图片url')
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
 
     class Meta:
