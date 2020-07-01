@@ -13,16 +13,14 @@ except:
     from django.contrib.formtools.wizard.forms import ManagementForm
     from django.contrib.formtools.wizard.views import StepsHelper
 
-import six
 from django.utils.encoding import smart_text
 from django.utils.module_loading import import_string
 from django.forms import ValidationError
 from django.forms.models import modelform_factory
+import six
 
 from xadmin.sites import site
 from xadmin.views import BaseAdminPlugin, ModelFormAdminView
-
-from xadmin.util import DJANGO_11
 
 
 def normalize_name(name):

@@ -10,7 +10,6 @@ from django.forms.models import modelform_factory
 from django.http import Http404
 from django.template import loader
 from django.template.response import TemplateResponse
-# import six
 from django.utils.encoding import force_text, smart_text
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
@@ -95,7 +94,7 @@ class ResultField(object):
                 else:
                     self.text = smart_text(value)
             else:
-                if isinstance(f.rel, models.ManyToOneRel):
+                if isinstance(f.remote_field, models.ManyToOneRel):
                     self.text = getattr(self.obj, f.name)
                 else:
                     self.text = display_for_field(value, f)

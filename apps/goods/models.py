@@ -37,7 +37,7 @@ class GoodsCategoryBrand(models.Model):
     '''
     品牌名
     '''
-    cagetory = models.ForeignKey(GoodsCategory, null=True, blank=True, verbose_name="商品类目", on_delete=models.CASCADE)
+    category = models.ForeignKey(GoodsCategory, null=True, blank=True, verbose_name="商品类目", on_delete=models.CASCADE)
     name = models.CharField(default="", max_length=30, verbose_name="品牌名", help_text="品牌名")
     desc = models.CharField(default="", max_length=200, verbose_name="品牌描述", help_text="品牌描述")
     image = models.ImageField(max_length=200, upload_to='brand/images')
@@ -102,7 +102,7 @@ class Banner(models.Model):
     轮播的商品
     '''
     goods = models.ForeignKey(Goods, verbose_name='商品', on_delete=models.CASCADE)
-    imgae = models.ImageField(upload_to='banner', verbose_name='轮播图片')
+    image = models.ImageField(upload_to='banner', verbose_name='轮播图片')
     index = models.IntegerField(default=0, verbose_name='轮播顺序')
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
 
