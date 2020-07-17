@@ -27,7 +27,7 @@ from goods.views import GoodsListViewSet
 router = DefaultRouter()
 
 # 配置goods 的url
-router.register(r'goods', GoodsListViewSet)
+router.register(r'goods', GoodsListViewSet, basename='goods-list')
 
 # goods_list = GoodsListViewSet.as_view({
 #     'get': 'list'
