@@ -11,7 +11,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework import viewsets
 
-from .models import Goods
+from .models import Goods, GoodsCategory
 from .filters import GoodsFilter
 
 
@@ -42,3 +42,11 @@ class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     #     if price_min:
     #         queryset = queryset.filter(shop_price__gt=int(price_min))
     #     return queryset
+
+
+class CategooryViewGer(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    list : 商品分类类列表页
+    """
+    queryset = GoodsCategory.objects.all()
+
