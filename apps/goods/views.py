@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-from .serializers import GoodSerializer
 from rest_framework import mixins
 from rest_framework import generics
 from rest_framework.response import Response
@@ -8,11 +7,11 @@ from rest_framework import status
 from rest_framework import filters
 from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
-
 from rest_framework import viewsets
 
 from .models import Goods, GoodsCategory
 from .filters import GoodsFilter
+from .serializers import GoodSerializer, CategorySerializer
 
 
 # Create your views here.
@@ -44,9 +43,11 @@ class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     #     return queryset
 
 
-class CategooryViewGer(mixins.ListModelMixin, viewsets.GenericViewSet):
+class CategoryViewGer(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     """
     list : 商品分类类列表页
     """
-    queryset = GoodsCategory.objects.all()
+    queryset = GoodsCategory.objects.filter(category_type=1)
+    serializer_class = CategorySerializer
+    pagination_class = StandardResultsSetPagination
 
