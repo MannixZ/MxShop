@@ -17,7 +17,7 @@ from .serializers import GoodSerializer, CategorySerializer
 # Create your views here.
 
 class StandardResultsSetPagination(PageNumberPagination):
-    page_size = 10
+    page_size = 12
     page_size_query_param = 'page_size'
     page_query_param = 'p'
     max_page_size = 100
@@ -33,7 +33,7 @@ class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filter_class = GoodsFilter
     search_fields = ['=name', 'goods_brief', 'goods_desc']
-    ordering_fields = ['name']
+    ordering_fields = ['sold_num', 'shop_price']
 
     # def get_queryset(self):
     #     queryset = Goods.objects.all()
@@ -45,7 +45,7 @@ class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
 
 class CategoryViewGer(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     """
-    list : 商品分类类列表页
+    list : 商品分类类列表数据
     """
     queryset = GoodsCategory.objects.filter(category_type=1)
     serializer_class = CategorySerializer
