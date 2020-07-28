@@ -21,6 +21,7 @@ from MxShop.settings import MEDIA_ROOT
 from django.views.static import serve
 from rest_framework.documentation import include_docs_urls
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken import views
 
 from goods.views import GoodsListViewSet, CategoryViewGer
 
@@ -42,6 +43,7 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'^ueditor/', include('DjangoUeditor.urls')),  # xadmin 副文本
     # url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),  # meida媒体文件路径
+    url(r'^api-token-auth/', views.obtain_auth_token),
 
     # 商品列表页
     # url(r'^goods/$', goods_list, name="goods-list"),
